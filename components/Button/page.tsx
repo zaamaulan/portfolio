@@ -3,6 +3,7 @@
 import React from 'react';
 import OutlineArrow from '../OutlineArrow/page';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface Props {
   buttonTitle: string;
@@ -32,9 +33,9 @@ export const AboutButton = () => {
   return (
     <Link
       href="/about"
-      className="transition duration-300 ease-in-out hover:text-white">
-      <button className="flex items-center gap-x-2 px-6 py-2 outline outline-zinc-400 transition-all duration-300 hover:pl-8 ">
-        About Me <OutlineArrow rotate="rotate-90" />
+      className="group transition duration-300 ease-in-out hover:text-white">
+      <button className="flex items-center gap-x-2  ">
+        More About Me <OutlineArrow className="rotate-90" />
       </button>
     </Link>
   );
@@ -42,8 +43,12 @@ export const AboutButton = () => {
 
 export const HireMe = () => {
   return (
-    <Link href="/contact">
-      <button className="px-5 py-1.5 text-white outline outline-1 outline-white">Hire Me!</button>
-    </Link>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, color: 'white' }}
+      transition={{ delay: 0.5 }}
+      >
+      <Link href="/contact">Hire Me!</Link>
+    </motion.div>
   );
 };
